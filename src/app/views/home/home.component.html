@@ -1,0 +1,20 @@
+
+<div class="home-container">
+    <header class="home-header">
+        <div class="home-header_button-contanier">
+            <app-button (click)="changeLanguaje('es')">Es</app-button>
+            <app-button (click)="changeLanguaje('en')">En</app-button>
+        </div>
+        <div class="home-header_container-user">
+            <app-user-icon></app-user-icon>
+        </div>
+    </header>
+    <aside class="home-aside">
+        <app-navigation>
+
+        </app-navigation>
+    </aside>
+    <main class="home-main">
+        <router-outlet></router-outlet>
+    </main>
+</div>

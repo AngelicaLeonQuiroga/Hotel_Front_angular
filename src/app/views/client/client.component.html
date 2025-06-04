@@ -1,0 +1,49 @@
+<h1>Clientes</h1>
+<div class="client-container">
+    <app-card>
+        <div class="client-search-container">
+            <div class="client-search">
+                <div class="client-search-input">
+                    <app-input [value]="searchValue()" (valueChange)="inputValue($event)"></app-input>
+                </div>
+                <div>
+                    <app-button (click)="search()">Buscar</app-button>
+                    <app-button (click)="search()" [type]="'green'">Buscar</app-button>
+                    <app-button (click)="search()" [type]="'red'">Buscar</app-button>
+                </div>
+            </div>
+            <div>
+                <app-button (click)="newClient()" [type]="'green'">Nuevo</app-button>
+            </div>
+
+        </div>
+    </app-card>
+    <app-card>
+        <app-table>
+            <ng-container table-header>
+                <tr>
+                    <th app-th>No. Cliente</th>
+                    <th app-th>Nombre</th>
+                    <th app-th>Telefono</th>
+                    <th app-th>Poblacion</th>
+                    <th app-th>Email</th>
+                    <th app-th></th>
+                </tr>
+            </ng-container>
+            <ng-container table-body>
+                @for(item of viewItems; track $index){
+                    <tr>
+                        <td app-td>{{item.id}}</td>
+                        <td app-td>{{item.name}}</td>
+                        <td app-td>{{item.phone}}</td>
+                        <td app-td>{{item.city}}</td>
+                        <td app-td>{{item.mail}}</td>
+                        <td app-td>
+                            <app-button (click)="goClient(item)">Detalles</app-button>
+                        </td>
+                </tr>
+                }
+            </ng-container>
+        </app-table>
+    </app-card>
+</div>

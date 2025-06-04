@@ -1,0 +1,7 @@
+<form #form (ngSubmit)="clickButtonCreate()">
+    <app-detail-client></app-detail-client>
+</form>
+<footer>
+    <app-button [type]="'green'" (click)="clickButtonCreate()" [htmlType]="'submit'">Crear</app-button>
+    <app-button [type]="'blue'" (click)="close()">Cancelar</app-button>
+</footer>

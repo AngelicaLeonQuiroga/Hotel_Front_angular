@@ -1,0 +1,17 @@
+.data-table {
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    clear: both;
+    width: 100%;
+    color: rgb(108, 117, 125);
+
+
+    .data-thead {
+        vertical-align: bottom;
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+        box-sizing: border-box;
+        border-collapse: collapse;
+    }
+}

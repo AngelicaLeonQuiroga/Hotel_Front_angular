@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "hotel_front": {
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,11 +23,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize":true,
             "outputPath": "dist/hotel_front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -37,6 +45,10 @@
             "scripts": []
           },
           "configurations": {
+            
+            "en" :{
+              "localize":["en"]
+            },
             "production": {
               "budgets": [
                 {
@@ -55,19 +67,31 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.config.mjs"
+          },
           "configurations": {
             "production": {
               "buildTarget": "hotel_front:build:production"
             },
             "development": {
               "buildTarget": "hotel_front:build:development"
+            },
+            "en": {
+              "buildTarget": "hotel_front:build:en"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +104,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
@@ -98,5 +123,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "196aa965-63df-4079-962c-b7bb929bcc53"
   }
 }

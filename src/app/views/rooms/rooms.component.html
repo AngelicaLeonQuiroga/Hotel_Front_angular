@@ -1,0 +1,39 @@
+<h1>Habitaciones</h1>
+<div appMarginContainer>
+    <app-card>
+        <app-button (click)="doBooking()">Nueva Reserva</app-button>
+    </app-card>
+    <app-card>
+        @if (!showBooking){
+            <app-table>
+                <ng-container table-header>
+                    <tr>
+                        <th app-th >{{'room_number' | translate}}</th>
+                        <th app-th i18n>Nombre</th>
+                        <th app-th i18n>Estado</th>
+                        <th app-th ></th>
+                    </tr>
+                </ng-container>
+                <ng-container table-body>
+                    @for(room of rooms; track $index){
+                        <tr>
+                            <td app-td >{{room.number}}</td>
+                            <td app-td >{{room.name | uppercase }}</td>
+                            <td app-td >{{room.state | stateRooms | uppercase}}</td>
+                            <td app-td >
+                                <app-button>Detalle</app-button>
+                            </td>
+                        </tr>
+                    }
+                </ng-container>
+            </app-table>
+        } 
+            @defer(on hover){
+                <app-booking [rooms]="rooms" (reservedRoom)="reservedRoom"></app-booking>
+            }
+            @placeholder{
+                <div>large component placeholder</div>
+            }
+        
+    </app-card>
+</div>

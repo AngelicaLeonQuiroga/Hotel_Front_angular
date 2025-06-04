@@ -1,0 +1,24 @@
+<div class="detail-client-container" >
+    <app-card>
+        <div class="detail-client-input-container ">
+                <label for="id">No. Cliente</label>
+                <app-input #id [disabled]="true"></app-input>
+        </div>
+    </app-card>
+    <app-card>
+        <div class="detail-client-input-container ">
+            <label for="name">Nombre
+                <app-input #name [value]="client().name"></app-input>
+            </label>
+            <label for="phone">Telefono
+                <app-input #phone [value]="client().phone"></app-input>
+            </label>
+            <label for="city">Poblacion
+                <app-input #city [value]="client().city"></app-input>
+            </label>
+            <label for="mail">Email
+                <app-input #mail [value]="client().mail"></app-input>
+            </label>
+        </div>
+    </app-card>
+</div>

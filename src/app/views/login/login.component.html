@@ -1,0 +1,61 @@
+<!--<div class="container">
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div>
+        <label for="nommbre">Nombre:</label>
+        <input id="nombre" 
+        type="text" 
+        [(ngModel)]="nombre" 
+        name="name" 
+        required 
+        minlength="3"
+        #nombreModel="ngModel"/>
+        <div *ngIf="nombreModel.invalid && nombreModel.touched">
+            <small *ngIf="nombreModel.errors?.['required']">el nombre es obliagtorio</small>
+            <small *ngIf="nombreModel.errors?.['minlength']">el nombre debe tener al menos 3 caracteres</small>
+        </div>
+    </div>
+    <div>
+        <label>Clave:</label>
+        <input id="clave" 
+        type="password" 
+        name="clave"
+        [(ngModel)]="pass"
+        required
+        minlength="6"
+        #claveModel="ngModel"/>
+        <div *ngIf="claveModel.invalid && claveModel.touched">
+            <small *ngIf="claveModel.errors?.['required']">La clave es obliagtorio</small>
+            <small *ngIf="claveModel.errors?.['minlength']">La clave debe tener al menos 6 caracteres</small>
+        </div>
+    </div>
+    <button type="submit" [disabled]="form.invalid">Aceptar</button>
+</form>
+</div>
+-->
+<!--Formularios reactivos-->
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" type="text" formControlName="nombre" />
+            @if(formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched){
+                @if(formulario.get('nombre')?.errors?.['required']){
+                    <small>El nombre es obligatorio</small>
+                }
+                @if(formulario.get('nombre')?.errors?.['minlength']){
+                    <small>El nombre debe tener almenos 3 cracteres</small>
+                }
+            }
+        </div>
+        <div>
+            <label for="clave">Clave:</label>
+            <app-input id="clave" type="password" formControlName="clave" />
+            <div *ngIf="formulario.get('clave')?.invalid && formulario.get('clave')?.touched">
+                <small *ngIf="formulario.get('clave')?.errors?.['required']">La clave es obliagtorio</small>
+                <small *ngIf="formulario.get('clave')?.errors?.['minlength']">La clave debe tener al menos 6 caracteres</small>
+        </div>
+        </div>
+        <button type="submit" [disabled]="formulario.invalid">Aceptar</button>
+    </form>
+
+</div>
